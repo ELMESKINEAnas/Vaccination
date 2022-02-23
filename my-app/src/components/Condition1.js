@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import Case from './Case';
+// import MultiStep from './MultiStep';
+// import link from 'react-router-dom'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -24,12 +26,9 @@ const{handleClose,open}=props;
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle>{"Please answer this question"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
-          </DialogContentText>
+          <Case/>
         </DialogContent>
         
       </Dialog>

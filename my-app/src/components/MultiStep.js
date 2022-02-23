@@ -17,6 +17,7 @@ import {
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import DateAdapter from '@mui/lab/AdapterDateFns';
+
 // import DateAdapter from '@mui/lab/AdapterMoment';
 
 
@@ -172,6 +173,7 @@ function getStepContent(step) {
 }
 
 const LinaerStepper = () => {
+
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -189,7 +191,7 @@ const LinaerStepper = () => {
 
   const handleNext = (data) => {
     console.log(data);
-    if (activeStep == steps.length - 1) {
+    if (activeStep === steps.length - 1) {
 
           setActiveStep(activeStep + 1);
     } else {

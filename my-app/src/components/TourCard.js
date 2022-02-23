@@ -39,7 +39,7 @@ const TourCard = () =>{
 
   
   
-  console.log(checkbox);
+//   console.log(checkbox);
 
   
 
@@ -57,7 +57,7 @@ const TourCard = () =>{
     },[disabled])
 
     useEffect(() => {
-        console.log(checkbox);
+        
     },[checkbox])
 
 

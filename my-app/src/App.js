@@ -1,34 +1,37 @@
 import TourCard from './components/TourCard';
 // import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import MultiStep from './components/MultiStep'
-import { CssBaseline, Container, Paper, Box } from "@material-ui/core";
+import { CssBaseline, Container } from "@material-ui/core";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 
 function App() {
   return (
+      <Router>
+       
+
     <div className="App">
        <>
-
-      <CssBaseline />
-      <Container component={Box} p={4}>
-        <Paper component={Box} p={3}>
-          <MultiStep></MultiStep>
-        </Paper>
-      </Container>
+       <CssBaseline />
       <Container>
-        <Grid container sx={{display : 'flex',
-      justifyContent : 'center',
-      alignItems : 'center'}} >
-          <TourCard />
-          {/* <TourCard />
-          <TourCard />
-          <TourCard /> */}
+        <Grid container sx={{
+          height:"100vh",
+          display : 'flex',
+          justifyContent : 'center',
+          alignItems : 'center'
+        }} >
+       <Routes>
+      
+          
+          <Route path="/home" element={<TourCard />} />
+          
+      </Routes>
         </Grid>
       </Container> 
      </>
       
     </div>
+      </Router>
   );
 }
 

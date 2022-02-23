@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import MultiStep from './MultiStep'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -25,11 +25,9 @@ const{handleClose,open}=props;
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle>{"Please fill up this form"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            yoyo
-          </DialogContentText>
+          <MultiStep />
         </DialogContent>
         
       </Dialog>
