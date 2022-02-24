@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "dev": "nodemon --exec babel-node App.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.1.1",
+    "express": "^4.17.2",
+    "express-validator": "5",
+    "mongoose": "^6.1.7",
+    "nodemailer": "^6.7.2",
+    "winston": "^3.4.0",
+    "winston-mongodb": "^5.0.7"
+  }
+}

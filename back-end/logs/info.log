@@ -1,0 +1,95 @@
+2022-01-24 02:51:15:5115 info: Manager user:Manager5 created!
+2022-01-24 15:05:25:525 info: Manager user:Manager1 created!
+2022-01-26 02:05:15:515 info: Manager user:Manager1 created!
+2022-01-26 02:07:07:77 info: Manager user:Manager1 deleted!
+2022-01-26 02:08:46:846 info: Manager user:Manager1 created!
+2022-01-26 02:09:01:91 info: Manager user:Manager1 deleted!
+2022-01-26 02:09:37:937 info: Manager user:Manager1 created!
+2022-01-26 02:09:45:945 info: Manager user:Manager1 deleted!
+2022-01-26 02:09:56:956 info: Manager user:Manager1 created!
+2022-01-26 02:10:05:105 info: Manager user:Manager2 created!
+2022-01-26 02:10:12:1012 info: Manager user:Manager3 created!
+2022-01-26 02:10:44:1044 info: login: Manager1@altcen.com logged!
+2022-01-26 02:21:33:2133 info: login: D.Manager1@dmanger.com logged!
+2022-02-02 03:19:20:1920 info: Manager user:hazosonita created!
+2022-02-02 03:21:26:2126 info: Manager user:qycubi created!
+2022-02-02 03:35:17:3517 info: Manager user:rofyxyreko created!
+2022-02-04 15:00:06:06 info: Manager user:bagapefa created!
+2022-02-04 16:48:58:4858 info: Manager user:sqdqsd created!
+2022-02-04 16:49:23:4923 info: Manager user:conobezep created!
+2022-02-04 16:49:32:4932 info: Manager user:bevet created!
+2022-02-04 17:27:19:2719 info: Manager user:testing created!
+2022-02-04 17:28:00:280 error: E11000 duplicate key error collection: br7.users index: email_1 dup key: { email: "dsd@sds.com" }
+2022-02-04 17:28:21:2821 info: Manager user:testing2 created!
+2022-02-07 09:57:12:5712 info: Manager user:lijizazu created!
+2022-02-07 09:58:12:5812 info: Manager user:jagihaf created!
+2022-02-07 09:59:15:5915 info: Manager user:ryvapu created!
+2022-02-07 10:00:11:011 info: Manager user:zoxyky created!
+2022-02-07 10:56:08:568 error: id is not defined
+2022-02-07 10:57:43:5743 error: id is not defined
+2022-02-07 10:58:00:580 error: id is not defined
+2022-02-07 10:58:24:5824 error: id is not defined
+2022-02-07 10:58:29:5829 error: id is not defined
+2022-02-07 10:59:20:5920 error: id is not defined
+2022-02-07 11:00:31:031 error: id is not defined
+2022-02-07 11:00:41:041 error: id is not defined
+2022-02-07 11:01:11:111 info: Manager user:Manager1a Updated!
+2022-02-07 11:05:25:525 info: Manager user:zoxyky deleted!
+2022-02-07 11:06:57:657 info: Manager user:jagihaf deleted!
+2022-02-07 11:08:12:812 info: Manager user:Manager1a deleted!
+2022-02-07 11:08:18:818 info: Manager user:Manager2 deleted!
+2022-02-07 11:09:55:955 info: Manager user:ryvapu deleted!
+2022-02-07 11:11:31:1131 info: Manager user:rafik created!
+2022-02-07 11:11:48:1148 info: Manager user:rafik deleted!
+2022-02-07 11:13:36:1336 info: Manager user:anas deleted!
+2022-02-07 11:14:30:1430 info: Manager user:lijizazu deleted!
+2022-02-07 11:14:49:1449 info: Manager user:testing deleted!
+2022-02-07 11:18:30:1830 info: Manager user:bevet deleted!
+2022-02-07 11:28:36:2836 info: Manager user:paqito created!
+2022-02-07 11:28:40:2840 info: Manager user:paqito deleted!
+2022-02-07 11:29:00:290 info: Manager user:conobezep deleted!
+2022-02-07 11:33:58:3358 info: Manager user:sqdqsd deleted!
+2022-02-07 11:34:08:348 info: Manager user:zobeqamoq created!
+2022-02-07 11:34:48:3448 info: Manager user:zobeqamoq deleted!
+2022-02-07 11:34:54:3454 info: Manager user:bagapefa deleted!
+2022-02-07 11:35:23:3523 info: Manager user:toqudazode created!
+2022-02-07 11:35:29:3529 info: Manager user:toqudazode deleted!
+2022-02-07 11:35:35:3535 info: Manager user:rofyxyreko deleted!
+2022-02-07 11:35:49:3549 info: Manager user:xibykacyta created!
+2022-02-07 11:35:52:3552 info: Manager user:xibykacyta deleted!
+2022-02-07 11:35:56:3556 info: Manager user:qycubi deleted!
+2022-02-07 11:35:59:3559 info: Manager user:hazosonita deleted!
+2022-02-07 11:36:08:368 info: Manager user:nipux created!
+2022-02-07 11:36:16:3616 info: Manager user:nipux deleted!
+2022-02-07 11:36:24:3624 info: Manager user:Manager3 deleted!
+2022-02-07 11:36:29:3629 info: Manager user:hiziwa created!
+2022-02-07 11:36:33:3633 info: Manager user:vobame created!
+2022-02-07 11:36:35:3635 info: Manager user:gahec created!
+2022-02-07 11:36:37:3637 info: Manager user:byqotibuv created!
+2022-02-07 11:36:39:3639 info: Manager user:kyjob created!
+2022-02-07 11:39:25:3925 info: Manager user:kyjob deleted!
+2022-02-07 11:42:39:4239 info: Manager user:byqotibuv deleted!
+2022-02-07 11:42:47:4247 info: Manager user:finyp created!
+2022-02-07 11:42:51:4251 info: Manager user:finyp deleted!
+2022-02-07 11:42:52:4252 info: Manager user:gahec deleted!
+2022-02-07 11:42:55:4255 info: Manager user:vobame deleted!
+2022-02-07 11:42:59:4259 info: Manager user:tysup created!
+2022-02-07 11:43:02:432 info: Manager user:tovero created!
+2022-02-07 11:43:04:434 info: Manager user:ziboxaroz created!
+2022-02-07 11:43:06:436 info: Manager user:remip created!
+2022-02-07 11:43:09:439 info: Manager user:remip deleted!
+2022-02-07 11:43:12:4312 info: Manager user:ziboxaroz deleted!
+2022-02-07 11:43:13:4313 info: Manager user:tovero deleted!
+2022-02-07 11:43:14:4314 info: Manager user:tysup deleted!
+2022-02-07 11:45:19:4519 info: Manager user:gecogoqym created!
+2022-02-07 11:45:24:4524 info: Manager user:jyvilyz created!
+2022-02-07 11:45:26:4526 info: Manager user:gohax created!
+2022-02-07 11:45:47:4547 info: Manager user:gohax deleted!
+2022-02-07 11:45:49:4549 info: Manager user:jyvilyz deleted!
+2022-02-07 11:47:24:4724 info: Manager user:hypidu created!
+2022-02-07 11:50:32:5032 info: Manager user:qolusefaqu created!
+2022-02-07 11:50:35:5035 info: Manager user:buditive created!
+2022-02-07 11:50:43:5043 info: Manager user:buditive deleted!
+2022-02-07 11:50:45:5045 info: Manager user:qolusefaqu deleted!
+2022-02-07 11:50:47:5047 info: Manager user:hypidu deleted!
+2022-02-07 11:50:50:5050 info: Manager user:gecogoqym deleted!

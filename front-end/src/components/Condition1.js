@@ -13,8 +13,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialog(props) {
 
-const{handleClose,open}=props;
+const{handleClose,open,values}=props;
 
+React.useEffect(() => {
+  console.log("from condition 1",values);
+}, [values])
 
 
   return (
@@ -28,7 +31,7 @@ const{handleClose,open}=props;
       >
         <DialogTitle>{"Please answer this question"}</DialogTitle>
         <DialogContent>
-          <Case/>
+          <Case validate={values}/>
         </DialogContent>
         
       </Dialog>

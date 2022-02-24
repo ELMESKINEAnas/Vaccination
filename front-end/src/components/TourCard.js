@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import AlertDialogSlide from './Condition1'
 import AlertDialog from './Condition2'
+import { useFormikContext } from 'formik';
 
 
 
@@ -28,9 +29,23 @@ const TourCard = () =>{
     setOpen(false);
   }
 
-
+  const {
+    values,
+    handleChange,
+    dirty,
+    submitForm,
+    errors,
+    submitCount,
+    isSubmitting,
+    setFieldValue
+  } = useFormikContext();
 
   
+  useEffect(() => {
+   console.log("formik",values);
+  }, [values])
+  
+
   const [checkbox, setCheckbox] = useState({
       diabete : false,
       maladie : false,
@@ -39,7 +54,7 @@ const TourCard = () =>{
 
   
   
-//   console.log(checkbox);
+  
 
   
 
@@ -61,21 +76,27 @@ const TourCard = () =>{
     },[checkbox])
 
 
-
+    console.log(checkbox);
 
     return <>  <Grid  item xs={3}>
             
-            <Paper  elevation ={3}>
+            <Paper elevation ={3}>
                 
                 
                 <FormGroup >
-                    <Box paddingX={2}>
+                    <Box padding={5}>
 
-                    <FormControlLabel   control={<Switch checked ={checkbox.diabete}  onChange = {(e)=>setCheckbox({...checkbox,diabete: !checkbox.diabete})} disabled={disabled}/>}
+                    <FormControlLabel   control={<Switch checked ={checkbox.diabete}  onChange = {(e)=>{
+                        setFieldValue("diabete",!checkbox.diabete)
+                        setCheckbox({...checkbox,diabete: !checkbox.diabete})
+                    }} disabled={disabled}/>}
                     value={checkbox.diabete}
                     label="diabete" 
-                    name="Diabete" />
-                    <FormControlLabel  control={<Switch checked ={checkbox.maladie}  onChange = {(e)=>setCheckbox({...checkbox,maladie:  !checkbox.maladie})} disabled={disabled}/>} 
+                    name="diabete" />
+                    <FormControlLabel  control={<Switch checked ={checkbox.maladie}  onChange = {(e)=>{
+                        setFieldValue("maladie",!checkbox.diabete)
+                        setCheckbox({...checkbox,maladie:  !checkbox.maladie})
+                    }} disabled={disabled}/>} 
                     value={checkbox.maladie} 
                     label="Maladies cardiaques" 
                     name="Maladies cardiaques" />
@@ -109,11 +130,12 @@ const TourCard = () =>{
                 
             </Paper>
            
-            {disabled && <AlertDialog handleClose={handleClose} open={open} />}
+            {disabled &&  <AlertDialogSlide values={values} handleClose={handleClose} open={open} />}
 
           </Grid>
 
-          {!disabled && Object.values(checkbox).some(e=>e===true)  && <AlertDialogSlide handleClose={handleClose} open={open} />}
+          {!disabled && Object.values(checkbox).some(e=>e===true)  && <AlertDialog values={values} handleClose={handleClose} open={open} />}
+
           
       
       

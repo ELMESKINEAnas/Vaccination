@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   TextField,
@@ -172,8 +172,13 @@ function getStepContent(step) {
   }
 }
 
-const LinaerStepper = () => {
+const LinaerStepper = (props) => {
 
+const {validate,covid,noCovid}=props;
+useEffect(()=>{
+  console.log(validate);
+
+},[validate])
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -182,6 +187,9 @@ const LinaerStepper = () => {
       age: "",
       cin: "",
       finCin: "",
+      validate,
+      covid,
+      noCovid
     },
   });
   const [activeStep, setActiveStep] = useState(0);

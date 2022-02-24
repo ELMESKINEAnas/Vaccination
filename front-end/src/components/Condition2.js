@@ -4,7 +4,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import MultiStep from './MultiStep'
-
+import { useEffect } from 'react';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -12,9 +12,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide(props) {
 
-const{handleClose,open}=props;
+const{handleClose,open, values}=props;
 
+useEffect(()=>{
 
+  console.log("multi",values);
+
+},[values])
 
   return (
     <div>
@@ -27,7 +31,7 @@ const{handleClose,open}=props;
       >
         <DialogTitle>{"Please fill up this form"}</DialogTitle>
         <DialogContent>
-          <MultiStep />
+          <MultiStep validate={values}  />
         </DialogContent>
         
       </Dialog>

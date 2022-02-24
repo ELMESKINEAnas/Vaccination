@@ -3,6 +3,8 @@ import TourCard from './components/TourCard';
 import Grid from '@mui/material/Grid';
 import { CssBaseline, Container } from "@material-ui/core";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { CardFormikProvider } from './components/CardFormikProvider';
+
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
        <Routes>
       
           
-          <Route path="/home" element={<TourCard />} />
+          <Route path="/home" element={<CardFormikProvider><TourCard /></ CardFormikProvider>} />
           
       </Routes>
         </Grid>
