@@ -22,38 +22,37 @@ const SearchUser = async (req, res) => {
             cin,
             date_fin_cin
         } = req.body;
-        console.log(req.body)
         const data = await Adult.findOne({
-            cin: cin,date_fin_cin: date_fin_cin
+            cin: cin
         })
         console.log(data)
         if (data) {
             if (data.dose1 == false) {
-                return res.status(400).json({
-                    status: false,
+                return res.status(200).json({
+                    status: true,
                     msg: "dose1"
                 })
             }
             if (data.dose2 == false) {
-                return res.status(400).json({
-                    status: false,
+                return res.status(200).json({
+                    status: true,
                     msg: "dose2"
                 })
             }
             if (data.dose3 == false) {
-                return res.status(400).json({
-                    status: false,
+                return res.status(200).json({
+                    status: true,
                     msg: "dose3"
                 })
             } else {
-                return res.status(400).json({
+                return res.status(200).json({
                     status: true,
                     msg: "download pass v"
                 })
             }
         } else {
-            return res.status(400).json({
-                status: true,
+            return res.status(200).json({
+                status: false,
                 msg: "Pas encore Enregistre"
             })
         }
@@ -104,8 +103,11 @@ const storeAdult = async (req, res) => {
         nom,
         prenom,
         age,
-        disease,
+        covid,
+        centre,
+        nocovid,
         chronic_disease,
+        region=1,
         cin,
         date_fin_cin
     } = req.body;
@@ -115,7 +117,7 @@ const storeAdult = async (req, res) => {
         var randomString = Math.random().toString(36).slice(-8);
         var date = new Date()
 
-        if (req.body.disease == true) {
+        if (req.body.covid == true) {
             var dateRdv = date.setDate(date.getDate() + 20)
         } else {
             var dateRdv = date.setDate(date.getDate() + 2)
@@ -125,7 +127,10 @@ const storeAdult = async (req, res) => {
             prenom,
             age,
             chronic_disease,
-            disease,
+            covid,
+            centre,
+            region,
+            nocovid,
             cin,
             date_fin_cin,
             hashed_password: randomString,
@@ -150,7 +155,9 @@ const storeAdult = async (req, res) => {
             nom,
             prenom,
             age,
-            disease,
+            covid,
+            nocovid,
+            centre,
             chronic_disease,
             cin,
             date_fin_cin,
@@ -173,6 +180,64 @@ const storeAdult = async (req, res) => {
             })
         })
     }
+}
+const storeDose2 = async (req, res) => {
+
+        var randomString = Math.random().toString(36).slice(-8);
+        var date = new Date()
+
+        if (req.body.covid == true) {
+            var dateRdv = date.setDate(date.getDate() + 20)
+        } else {
+            var dateRdv = date.setDate(date.getDate() + 2)
+        }
+
+        let doc = await Adult.findOne({ cin: 'HH123' });
+        doc.hashed_password=randomString;
+        doc.rdv=dateRdv;
+        doc.save((err, result) => {
+            if (err) {
+                return res.status(400).send({
+                    status: false,
+                    mes: err
+                })
+            }
+            return res.status(201).json({
+                status: true,
+                response: result,
+                msg: "successfully updated"
+            })
+        })
+   
+}
+const storeDose3 = async (req, res) => {
+
+        var randomString = Math.random().toString(36).slice(-8);
+        var date = new Date()
+
+        if (req.body.covid == true) {
+            var dateRdv = date.setDate(date.getDate() + 20)
+        } else {
+            var dateRdv = date.setDate(date.getDate() + 2)
+        }
+
+        let doc = await Adult.findOne({ cin: 'HH123' });
+        doc.hashed_password=randomString;
+        doc.rdv=dateRdv;
+        doc.save((err, result) => {
+            if (err) {
+                return res.status(400).send({
+                    status: false,
+                    mes: err
+                })
+            }
+            return res.status(201).json({
+                status: true,
+                response: result,
+                msg: "successfully updated"
+            })
+        })
+   
 }
 const storeMinor = async (req, res) => {
 
@@ -350,9 +415,81 @@ const valideDose = async (req, res) => {
 
 
 }
+const validation = async (req, res) => {
+    try {
+        const result = await Adult.findOne({
+            _id: req.params.id
+        })
+        if (req.body.password === result.hashed_password) {
+            if (result.dose1 == false) {
+                result.dose1 = true;
+                result.hashed_password=null
+                result.rdv=null
+                result.save()
+                return res.status(201).json({
+                    status: true,
+                    response: result,
+                })
+            }
+            if (result.dose2 == false) {
+                result.dose2 = true;
+                result.hashed_password=null
+                result.rdv=null
+                result.save()
+                return res.status(201).json({
+                    status: true,
+                    response: result,
+                })
+            }
+            if (result.dose3 == false) {
+                result.dose3 = true;
+                result.hashed_password=null
+                result.rdv=null
+                result.save()
+                return res.status(201).json({
+                    status: true,
+                    response: result,
+                })
+            }
+        }else{
+            return res.status(400).json({
+                status: false,
+                msg: "Password not match",
+            })
+        }
+    } catch (error) {
+        return res.status(400).json({
+            status: false,
+            msg: "user not found",
+        })
+    }
+
+
+}
+const getAll = async (req, res) => {
+    
+    try {
+        const users = await Adult.find({region:req.params.id})
+        res.status(200).json({
+            status: true,
+            users
+
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: false,
+            msg: err
+        })
+    }
+}
+
 export {
     SearchUser,
     storeAdult,
+    getAll,
+    storeDose2,
+    storeDose3,
     storeMinor,
-    valideDose
+    valideDose,
+    validation
 }

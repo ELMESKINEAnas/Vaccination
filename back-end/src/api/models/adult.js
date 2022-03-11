@@ -22,13 +22,7 @@ const adultSchema = new mongoose.Schema({
     trim:true,
   },
   chronic_disease: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  disease: {
     type: Boolean,
-    required: true,
   },
   age: {
     type: Number,
@@ -52,7 +46,7 @@ const adultSchema = new mongoose.Schema({
     type:Boolean,
     default:false,
   },
-  Centre:{
+  centre:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Centre',
   },
