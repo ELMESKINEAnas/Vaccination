@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { API_URL } from "../config";
+import { API_URL } from "../../config";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Rdv from "./rdv";
-
-import toastr from 'toastr'
-import "toastr/build/toastr.css"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -35,29 +31,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserCreate() {
   const classes = useStyles();
-  //POPUP RDV
-  const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-
   
-    const handleClose = () => {
-      setOpen(false);
-      localStorage.clear();
-
-    };
-
   const handleSubmit = event => {
     event.preventDefault();
     var data = {
-      "choice":"adult",
-      'cin': CIN,
-      'date_fin_cin': date
-      ,
+      'email': email,
+      'password': password,
     }
-    fetch(`${API_URL}SearchUser`, {
+    fetch(`${API_URL}LoginAdmin`, {
         method: 'POST',
         headers:{
           "Accept":"application/json",
@@ -67,44 +48,21 @@ export default function UserCreate() {
       })
       .then(res => res.json())
       .then(res => {
-        if(res.status === false){
-          window.location = '/newUser'
+        if(res.error){
         }else{
-          if(res.data.rdv === null ){
-            if(res.msg ==="dose1"){
-              window.location = '/newUser'
-              toastr.info('New User','Please insert all info',{positionClass:"toastr-bottom-left"})
-            }
-            if(res.msg==="dose2"){
-              localStorage.setItem('token-Dose',JSON.stringify(res.data.cin))
-              window.location = '/dose2'
-  
-            }
-            if(res.msg==="dose3"){
-              localStorage.setItem('token-Dose',JSON.stringify(res.data.cin))
-              window.location = '/dose3'
-  
-            }
-          }else{
-            console.log(res.data.rdv)
-            localStorage.setItem('token-RDV',JSON.stringify(res.data.rdv))
-              handleClickOpen(!open) 
-          }
+            localStorage.setItem('token-admin',JSON.stringify(res.user))
+            window.location = '/admin'
         }
-       
-           
     })
     }
 
-  const [CIN, setCIN] = useState('');
-  const [date, setdate] = useState('');
-
-
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
   return (
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Take a RdV 
+          Admin Login 
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -113,9 +71,9 @@ export default function UserCreate() {
                 variant="outlined"
                 required
                 fullWidth
-                id="CIN"
-                label="CIN"
-                onChange={(e) => setCIN(e.target.value)}
+                id="email"
+                label="Email"
+                onChange={(e) => setemail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -123,9 +81,10 @@ export default function UserCreate() {
                 variant="outlined"
                 required
                 fullWidth
-                id="date"
-                type="date"
-                onChange={(e) => setdate(e.target.value)}
+                label="Password"
+                id="password"
+                type="password"
+                onChange={(e) => setpassword(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -136,11 +95,10 @@ export default function UserCreate() {
             color="primary"
             className={classes.submit}
           >
-            Take
+            Login
           </Button>
         </form>
       </div>
-      {<Rdv handleClose={handleClose} open={open} />}
     </Container>
 
   );

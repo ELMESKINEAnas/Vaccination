@@ -9,6 +9,13 @@ import { CardFormikProvider } from './components/dose1/CardFormikProvider';
 import Start  from './components/Start';
 import Respo  from './components/respo/';
 import RespoHome  from './components/respo/home';
+import Admin  from './components/admin/index';
+import Respos  from './components/admin/Respo';
+import Centre  from './components/admin/centre';
+import Status  from './components/admin/stats';
+import NavBar  from './components/navbar';
+import Login  from './components/admin/login';
+
 
 
 
@@ -29,11 +36,16 @@ function App() {
         }} >
        <Routes>
       
-          
           <Route path="/newUser" element={<CardFormikProvider><TourCard /></ CardFormikProvider>} />
           <Route path="/dose2" element={<Case />}/>
           <Route path="/dose3" element={<Case2 />}/>
           <Route path="/" element={<Start></Start>}/>
+          <Route path="/admin/login" element={<Login></Login>}/>
+          <Route path="/admin" element={<Admin></Admin>}>
+            <Route path='/admin' element={<Status></Status>}  />
+            <Route path='/admin/respos' element={<Respos></Respos>}  />
+            <Route path='/admin/centre' element={<Centre></Centre>}  />
+          </Route>
           <Route path="/respo" element={<Respo></Respo>}/>
           <Route path="/respo/home" element={<RespoHome></RespoHome>}/>
           

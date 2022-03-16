@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 const LinaerStepper = (props) => {
 
+  const jwt = localStorage.getItem('token-Dose')
+  const cin = JSON.parse(jwt)
 const {covid,noCovid}=props;
 
   const classes = useStyles();
@@ -34,7 +36,7 @@ const {covid,noCovid}=props;
   const MySwal = withReactContent(Swal)
   const handleNext = (data) => {
     console.log(data);
-    fetch(`${API_URL}storeDose3`,{
+    fetch(`${API_URL}storeDose3/`+cin,{
       method:"POST",
       headers:{
           "Accept":"application/json",

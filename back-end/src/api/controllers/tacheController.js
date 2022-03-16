@@ -30,23 +30,27 @@ const SearchUser = async (req, res) => {
             if (data.dose1 == false) {
                 return res.status(200).json({
                     status: true,
+                    data:data,
                     msg: "dose1"
                 })
             }
             if (data.dose2 == false) {
                 return res.status(200).json({
                     status: true,
+                    data:data,
                     msg: "dose2"
                 })
             }
             if (data.dose3 == false) {
                 return res.status(200).json({
                     status: true,
+                    data:data,
                     msg: "dose3"
                 })
             } else {
                 return res.status(200).json({
                     status: true,
+                    data:data,
                     msg: "download pass v"
                 })
             }
@@ -67,6 +71,7 @@ const SearchUser = async (req, res) => {
             if (data.dose1 == false) {
                 return res.status(400).json({
                     status: false,
+                    data:data,
                     msg: "dose1"
                 })
             }
@@ -107,10 +112,12 @@ const storeAdult = async (req, res) => {
         centre,
         nocovid,
         chronic_disease,
-        region=1,
+        region,
         cin,
         date_fin_cin
     } = req.body;
+
+
     if (req.body.chronic_disease == false) {
 
 
@@ -157,6 +164,7 @@ const storeAdult = async (req, res) => {
             age,
             covid,
             nocovid,
+            region,
             centre,
             chronic_disease,
             cin,
@@ -192,7 +200,7 @@ const storeDose2 = async (req, res) => {
             var dateRdv = date.setDate(date.getDate() + 2)
         }
 
-        let doc = await Adult.findOne({ cin: 'HH123' });
+        let doc = await Adult.findOne({ cin: req.params.id });
         doc.hashed_password=randomString;
         doc.rdv=dateRdv;
         doc.save((err, result) => {
@@ -221,7 +229,7 @@ const storeDose3 = async (req, res) => {
             var dateRdv = date.setDate(date.getDate() + 2)
         }
 
-        let doc = await Adult.findOne({ cin: 'HH123' });
+        let doc = await Adult.findOne({ cin: req.params.id });
         doc.hashed_password=randomString;
         doc.rdv=dateRdv;
         doc.save((err, result) => {
@@ -482,6 +490,56 @@ const getAll = async (req, res) => {
         })
     }
 }
+const getFirstDose = async (req, res) => {
+    
+    try {
+        const users = await Adult.find(
+            { $or:[ {dose1:true}, { dose2:true}, { dose3:true} ]}).count()
+        res.status(200).json({
+            status: true,
+            users
+
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: false,
+            msg: err
+        })
+    }
+}
+const getThirdDose = async (req, res) => {
+    
+    try {
+        const users = await Adult.find({dose3:true}).count()
+        res.status(200).json({
+            status: true,
+            users
+
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: false,
+            msg: err
+        })
+    }
+}
+const getSecondeDose = async (req, res) => {
+    
+    try {
+        const users = await Adult.find(
+            { $or:[ { dose2:true}, { dose3:true} ]}).count()
+        res.status(200).json({
+            status: true,
+            users
+
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: false,
+            msg: err
+        })
+    }
+}
 
 export {
     SearchUser,
@@ -490,6 +548,9 @@ export {
     storeDose2,
     storeDose3,
     storeMinor,
+    getFirstDose,
+    getSecondeDose,
+    getThirdDose,
     valideDose,
     validation
 }

@@ -6,9 +6,7 @@ import {
   Stepper,
   Step,
   StepLabel,
-  Select,
   MenuItem,
-  InputLabel
 } from "@material-ui/core";
 // import InputLabel from '@mui/material/InputLabel';
 import { makeStyles } from "@material-ui/core/styles";
@@ -79,44 +77,7 @@ const CentresGet = () => {
           />
         )}
       />
-        <InputLabel id="demo-simple-select-label">Region</InputLabel>
-      <Controller
-        control={control}
-        name="select"
-        render={({ field }) => (
-          <Select
-          label="Region"
-          labelId="demo-simple-select-label"
-          fullWidth
-          id="demo-simple-select"
-          {...field}
-          >
-    <MenuItem value={3}>Casablanca</MenuItem>
-    <MenuItem value={1}>Marrakesh/Safi</MenuItem>
-    <MenuItem value={2}>Tanger</MenuItem>
-    
-  </Select>
-        )}
-      />
-        <InputLabel id="demo-simple-select-label">Centre</InputLabel>
-      <Controller
-        control={control}
-        name="centre"
-        render={({ field }) => (
-          <Select
-          label="Centre"
-          labelId="demo-simple-select-label"
-          fullWidth
-          id="demo-simple-select"
-          {...field}
-          >
-{centres.map((centre) => (
-    <MenuItem key={centre._id} value={centre._id}>{centre.name}</MenuItem>
-  ))}
-        </Select>)}
-      />
-
-      <Controller
+       <Controller
         control={control}
         name="nom"
         render={({ field }) => (
@@ -131,7 +92,42 @@ const CentresGet = () => {
           />
         )}
       />
-
+<Controller
+control={control}
+name="region"
+render={({ field }) => (
+<TextField 
+          id="select" 
+          margin="dense" 
+          fullWidth 
+          label="Region"  
+           select
+           {...field}
+ >
+            <MenuItem value={3}>Casablanca</MenuItem>
+            <MenuItem value={1}>Marrakesh/Safi</MenuItem>
+            <MenuItem value={2}>Tanger</MenuItem>
+        </TextField>
+  )}
+/>
+<Controller
+control={control}
+name="centre"
+render={({ field }) => (
+<TextField 
+          id="select" 
+          margin="dense" 
+          fullWidth 
+          label="Centre"
+          {...field}
+           select
+ >
+{centres.map((centre) => (
+    <MenuItem key={centre._id} value={centre._id}>{centre.name}</MenuItem>
+  ))}        
+</TextField>
+  )}
+/>
     </>
   );
 };
@@ -169,7 +165,7 @@ const CinForm = () => {
             id="cin"
             label="cin"
             variant="outlined"
-            placeholder="Enter Your cin"
+            placeholder="Enter Your CIN"
             fullWidth
             margin="normal"
             {...field}
@@ -186,11 +182,12 @@ const CinForm = () => {
                 
           <DesktopDatePicker
             id="date_fin_cin"
-            label="enter your fin cin "
+            label="Enter your fin CIN "
             inputFormat="MM/dd/yyyy"
             value={value}
             onChange={handleChange}
             fullWidth
+            color="black"
             margin="normal"
             {...field}
             renderInput={(params) => <TextField fullWidth {...params} />}
@@ -200,21 +197,6 @@ const CinForm = () => {
       /><br/>
       <br/>
 
-      {/* <Controller
-        control={control}
-        name="date_fin_cin"
-        render={({ field }) => (
-          <TextField
-            id="date_fin_cin"
-            label="fin cin"
-            variant="outlined"
-            placeholder="Enter Your fin cin"
-            fullWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      /> */}
     </>
   );
 };
@@ -248,7 +230,7 @@ useEffect(()=>{
       chronic_disease,
       covid,
       noCovid,
-      select : ""
+      region : ""
     },
   });
   const [activeStep, setActiveStep] = useState(0);
@@ -280,7 +262,7 @@ useEffect(()=>{
             
           }).then(() => {
             return MySwal.fire(       
-              // window.location = '/'
+              window.location = '/'
             )
           })
             

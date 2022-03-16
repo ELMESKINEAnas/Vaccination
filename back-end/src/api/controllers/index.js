@@ -6,13 +6,31 @@ export {
     storeDose3,
     storeMinor,
     valideDose,
+    getFirstDose,
+    getSecondeDose,
+    getThirdDose,
     validation
 }
 from "./tacheController.js"
 export {
     LoginResp,
-    AllCentre,
+    AllRespo,
+    OneRespo,
+    UpdateRespo,
+    DeleteRespo,
     signupResp,
-    CreateCentre
 }
 from "./respController.js"
+export {
+    LoginAdmin,
+    signupAdmin,
+}
+from "./admin.js"
+export {
+        AllCentre,
+        OneCentre,
+        UpdateCentre,
+        DeleteCentre,
+        CreateCentre,
+}
+from "./centre.js"
